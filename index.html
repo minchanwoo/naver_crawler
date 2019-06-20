@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>네이버 실검 크롤링</title>
+</head>
+<body>
+    <div class='keywords'>
+    
+    </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+      var socket = io();
+
+      socket.on('a', (data)=> {
+        const { result } = data;
+        
+        const ul_list = document.createElement('ol');
+        
+        result.forEach((res)=> {
+            const list = document.createElement('li');
+            list.innerText = res
+            ul_list.appendChild(list)   
+        })
+        document.querySelector('.keywords').innerHTML = '';
+        document.querySelector('.keywords').appendChild(ul_list)
+      })
+  </script>
+</body>
+</html>
